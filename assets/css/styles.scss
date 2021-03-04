@@ -1,0 +1,198 @@
+$baseFont: 'Open Sans', sans-serif !important;
+$titleFont: 'Playfair Display', serif;
+$screen-sm-max: 576px;
+$screen-md-max: 768px;
+
+@mixin sm {
+    @media (max-width: #{$screen-sm-max}) {
+        @content;
+    }
+}
+
+@mixin md {
+    @media (max-width: #{$screen-md-max}) {
+        @content;
+    }
+}
+
+html{
+    height: 100%!important;
+    body{
+        margin: 0!important;
+        padding: 0!important;
+        height: 100%!important;
+    
+        .title-font{
+            font-family: $titleFont;
+        }
+        .emdash{
+            display: inline-block;
+            height: 5px;
+            border-top: 2px solid #000;
+            margin-right: 10px;
+        }
+        .emdash-1{
+            width: 20px;
+        }
+        .emdash-2{
+            width: 50px;
+        }
+        .pointed-corner{
+            border-radius: 0px;
+        }
+        
+        .flex-container{
+            display: flex;
+            flex-wrap: nowrap;
+            .sidebar{
+                min-width: 100px!important;
+                max-width: 100px!important;
+                display: inline-block;
+            }
+
+            .left-sidebar{
+                box-shadow: 0px 5px 5px #ccc;
+                .sidebar-items{
+                    position: fixed;
+                    .sidebar-list{
+                        padding: 0;
+                        position: relative;
+                        top: 350px;
+                        width: 100px;
+                    }
+                    .rotate{
+                        transform: translate(-34%, 30px) rotate(-90deg);
+                        width: 300px;
+                        font-size: 12px;
+                        letter-spacing: 1px;
+                    }
+                }
+            }
+            
+            .right-sidebar{
+                box-shadow: -1px 5px 5px #ccc;
+                
+                .rotate{
+                    transform: translate(-34%, 230px) rotate(90deg);
+                    width: 400px;
+                    font-size: 12px;
+                    letter-spacing: 1px;
+                }
+
+                .sidebar-item{
+                    position: fixed;
+                }
+            }
+
+            #content{
+                display: inline-block;
+                .hero{
+                    height: 100vh;
+                    background-image: url('../img/hero-bg.png');
+                    background-size: cover;
+                    background-repeat: no-repeat;
+        
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+        
+                    @include sm {
+                        background-position: center;
+                    }
+        
+                    .hero-logo{
+                        @include sm{
+                            width: 75%;
+                        }
+                    }
+                }
+                
+        
+                .feature-section{
+                    .feature-row{
+                        height: 100%;
+                        @include sm{
+                            flex-direction: column-reverse;
+                        }
+                    }
+                    .feature-image{
+                        background-image: url('../img/feature-img.png');
+                        background-size: cover;
+                        min-height: 100%;
+                    }
+                    .blurb{
+                        line-height: 2;
+                        font-size: 13px;
+                    }
+                    .feature-menu{
+                        list-style: none;
+                        .feature-menu-item{
+                            display: inline-block;
+                        }
+                    }
+                }
+        
+                .the-team{
+                    .row{
+                        justify-content: center;
+                        .team-profile-container{
+                            width: 20%;
+                            padding: 5px;
+                            .profile-img-box{
+                                position: relative;
+                                .member-image{
+                                    display: block;
+                                    width: 100%;
+                                    height: auto;
+                                    filter: gray;
+                                    -webkit-filter: grayscale(100%)
+                                }
+                                .overlay{
+                                    position: absolute;
+                                    top: 0;
+                                    bottom: 0;
+                                    left: 0;
+                                    right: 0;
+                                    height: 100%;
+                                    width: 100%;
+                                    opacity: 0;
+                                    transition: .5s ease;
+                                    background-color: #000;
+                                }
+        
+                                &:hover .overlay{
+                                    opacity: .5;
+                                    .text {
+                                        color: white;
+                                        font-size: 14px;
+                                        position: absolute;
+                                        top: 80%;
+                                        left: 50%;
+                                        -webkit-transform: translate(-50%, -50%);
+                                        -ms-transform: translate(-50%, -50%);
+                                        transform: translate(-50%, -50%);
+                                        text-align: left;
+                                    }                                
+                                }
+        
+                                &:hover .member-image{
+                                    filter: none;
+                                    -webkit-filter: grayscale(0%);
+                                }
+                            }
+                            .profile-details{
+                                .profile-name{
+                                    font-size: 13px;
+                                }
+                                .team-position{
+                                    font-size: 11px;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        
+    }
+}
