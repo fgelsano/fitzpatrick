@@ -150,6 +150,12 @@ html body .flex-container #content .feature-section .feature-menu .feature-menu-
   display: inline-block;
 }
 
+@media (min-width: 576px) and (max-width: 768px) {
+  html body .flex-container #content .feature-section .feature-menu .feature-menu-item {
+    display: block;
+  }
+}
+
 html body .flex-container #content .the-team .row {
   -webkit-box-pack: center;
       -ms-flex-pack: center;

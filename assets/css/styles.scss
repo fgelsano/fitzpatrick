@@ -1,7 +1,7 @@
 $baseFont: 'Open Sans', sans-serif !important;
 $titleFont: 'Playfair Display', serif;
 $screen-sm-max: 576px;
-$screen-md-max: 768px;
+$screen-md-min: 768px;
 
 @mixin sm {
     @media (max-width: #{$screen-sm-max}) {
@@ -10,7 +10,7 @@ $screen-md-max: 768px;
 }
 
 @mixin md {
-    @media (max-width: #{$screen-md-max}) {
+    @media (min-width: $screen-sm-max) and (max-width: #{$screen-md-min}) {
         @content;
     }
 }
@@ -127,7 +127,11 @@ html{
                     .feature-menu{
                         list-style: none;
                         .feature-menu-item{
-                            display: inline-block;
+                            display: inline-block;                           
+                                
+                            @include md{
+                                display: block;
+                            }
                         }
                     }
                 }
